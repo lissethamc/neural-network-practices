@@ -1,3 +1,4 @@
+#Parte1, clasificación de compuertas AND, OR, XOR 
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -16,7 +17,7 @@ class Perceptron:
                 y_est[i] = 1
             else:
                 y_est[i] = 0
-            return y_est
+        return y_est
     
     def fit(self,X,Y,epochs=50):#función de aprendizaje/entrenamiento
         p = X.shape[1]
@@ -27,9 +28,39 @@ class Perceptron:
                 self.w += self.eta * (Y[i]-y_est)*X[:,i]
                 self.b += self.eta * (Y[i]-y_est)*1
 
+def draw_2d (model): #solo sirve para plotear 2d
+    w1, w2, b = model.w[0],model.w[1],model.b
+    li, ls = -2,2 #limites de la compuerta
+    plt.plot([li,ls],
+             [(1/w2)*(-w1*(li)-b),(1/w2)*(-w1*(ls)-b)], 
+             '--k')
+
 neuron = Perceptron(2, 0.1)
 
 X = np.array([[0,0,1,1],
               [0,1,0,1]])     #X en el dataset   
 
-Y = np.array([0,0,0,1])#compuerta AND 
+#Y = np.array([0,0,0,1])#compuerta AND
+#Y = np.array([1,1,1,0])#compuerta OR
+#Y = np.array([0,1,1,0])#compuerta XOR
+
+#Entrenamiento de la neurona
+neuron.fit(X,Y)
+
+#Dibujo
+_, p = X.shape
+for i in range (p):
+    if Y[i] == 0:
+        plt.plot(X[0,i],X[1,i],'or')
+    else:
+        plt.plot(X[0,i],X[1,i],'ob')
+
+plt.title('Perceptron')
+plt.grid('on')
+plt.xlim([-1,2])
+plt.ylim([-1,2])
+plt.xlabel(r'$x_1$')
+plt.xlabel(r'$x_2$')
+
+draw_2d(neuron)
+plt.show()
