@@ -40,9 +40,9 @@ neuron = Perceptron(2, 0.1)
 X = np.array([[0,0,1,1],
               [0,1,0,1]])     #X en el dataset   
 
-Y = np.array([0,0,0,1])#compuerta AND
+#Y = np.array([0,0,0,1])#compuerta AND
 #Y = np.array([1,1,1,0])#compuerta OR
-#Y = np.array([0,1,1,0])#compuerta XOR
+Y = np.array([0,1,1,0])#compuerta XOR
 
 #Entrenamiento de la neurona
 neuron.fit(X,Y)
