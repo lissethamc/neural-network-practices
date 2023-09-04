@@ -67,9 +67,6 @@ for i in range(p):
 
     Y_norm[i] = (Y[i]- Y_sort[0])/ (Y_sort[D-1] -  Y_sort[0])
 
-
-
-
 #Dibujo
 _, p = X.shape
 for i in range (p):
@@ -80,5 +77,13 @@ for i in range (p):
         Y_norm[i]=0
         plt.plot(X_norm[0,i],X_norm[1,i],'ob')
 neuron.fit(X_norm,Y_norm)
+
+plt.title('Cálculo de IMC | Perceptrón')
+plt.grid('on')
+plt.xlim([-0.05,1.05])
+plt.ylim([-0.05,1.05])
+plt.xlabel(r'$Altura$')
+plt.xlabel(r'$Peso$')
+
 draw_2d(neuron)
 plt.show()
