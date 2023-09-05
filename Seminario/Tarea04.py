@@ -1,3 +1,4 @@
+#OR gate adjusting manually weights
 import numpy as np
 import matplotlib.pyplot as plt
 
