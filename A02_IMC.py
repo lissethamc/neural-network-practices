@@ -37,7 +37,7 @@ def draw_2d (model): #solo sirve para plotear 2d
 
 neuron = Perceptron(2, 0.5)  
 
-D=130
+D=15
 X = np.zeros([2,D])
 Y = np.zeros([D])
 
@@ -83,7 +83,7 @@ plt.grid('on')
 plt.xlim([-0.05,1.05])
 plt.ylim([-0.05,1.05])
 plt.xlabel(r'$Altura$')
-plt.xlabel(r'$Peso$')
+plt.ylabel(r'$Peso$')
 
 draw_2d(neuron)
 plt.show()

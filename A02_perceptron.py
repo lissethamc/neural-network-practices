@@ -55,7 +55,7 @@ for i in range (p):
     else:
         plt.plot(X[0,i],X[1,i],'ob')
 
-plt.title('Perceptron')
+plt.title('Perceptron | XOR')
 plt.grid('on')
 plt.xlim([-1,2])
 plt.ylim([-1,2])
