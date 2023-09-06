@@ -1,23 +1,28 @@
 import tkinter as tk
+from tkinter import ttk
 
-def habilitar_boton():
-    boton.config(state="normal")  # Habilitar el botón
-
-def deshabilitar_boton():
-    boton.config(state="disabled")  # Deshabilitar el botón
+def obtener_texto():
+    texto_ingresado = entrada.get()
+    etiqueta_resultado.config(text=f"Texto ingresado: {texto_ingresado}")
 
 ventana = tk.Tk()
-ventana.title("Botón Habilitado/Desabilitado")
+ventana.title("Entradas de Texto con Placeholders")
 
-# Crear un botón
-boton = tk.Button(ventana, text="Botón", state="normal")  # Estado normal (habilitado) por defecto
-boton.pack()
+# Crear un objeto de estilo para Entry con marcador de posición
+style = ttk.Style()
+style.configure("Placeholder.TEntry", foreground="gray")
 
-# Botones para habilitar y deshabilitar
-boton_habilitar = tk.Button(ventana, text="Habilitar", command=habilitar_boton)
-boton_deshabilitar = tk.Button(ventana, text="Deshabilitar", command=deshabilitar_boton)
+# Barra para ingresar texto (Entry) con marcador de posición
+entrada = ttk.Entry(ventana, style="Placeholder.TEntry")
+entrada.insert(0, "Escribe aquí...")  # Texto de marcador de posición
+entrada.pack(pady=5)
 
-boton_habilitar.pack()
-boton_deshabilitar.pack()
+# Botón para obtener el texto ingresado
+boton_obtener_texto = ttk.Button(ventana, text="Obtener Texto", command=obtener_texto)
+boton_obtener_texto.pack()
+
+# Etiqueta para mostrar el resultado
+etiqueta_resultado = ttk.Label(ventana, text="")
+etiqueta_resultado.pack(pady=10)
 
 ventana.mainloop()
